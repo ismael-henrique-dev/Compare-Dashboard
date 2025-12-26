@@ -44,7 +44,7 @@ export function NavMain({
                           'bg-green-700 text-white hover:bg-green-800 hover:text-white'
                       )}
                     >
-                      <Icon className='w-5 h-5' />
+                      <Icon className='w-5! h-5!' />
                       <span>{item.title}</span>
                     </SidebarMenuButton>
                   </Link>
