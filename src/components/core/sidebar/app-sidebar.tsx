@@ -5,6 +5,7 @@ import {
   IconDashboard,
   IconExclamationCircle,
   IconHistory,
+  IconUsers,
 } from '@tabler/icons-react'
 
 // import { NavMain } from '@/components/nav-main'
@@ -46,11 +47,11 @@ const data = {
       url: '/dashboard/scraping-erros',
       icon: IconExclamationCircle,
     },
-    // {
-    //   title: 'Alunos',
-    //   url: '/dashboard/students',
-    //   icon: IconUsers,
-    // },
+    {
+      title: 'Relatório de acesso',
+      url: '/dashboard/access-report',
+      icon: IconUsers,
+    },
   ],
 }
 
