@@ -33,6 +33,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-text-primary: var(--primary-text-color);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
@@ -49,6 +50,7 @@
 
 :root {
 
+  --primary-text-color: #737373;
   --brand-green: #1b7e2f;
   --radius: 0.625rem;
   --background: oklch(1 0 0);

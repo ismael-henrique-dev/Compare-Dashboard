@@ -21,7 +21,7 @@ export default function SendCode() {
       </div>
       <div className='flex flex-col gap-4 md:p-10'>
         <div className='flex flex-1 items-center justify-center'>
-          <div className='w-full md:max-w-sm'>
+          <div className='w-full md:max-w-106'>
             <div className='w-full lg:hidden flex items-center justify-center mb-6'>
               <Image
                 src='/auth-logo.png'

@@ -23,15 +23,15 @@ export function SendEmailForm({
   const handleBack = () => {
     router.back()
   }
-  
+
   const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<SendEmailData>({
-      mode: 'onChange',
-      resolver: zodResolver(sendEmailSchema),
-    })
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SendEmailData>({
+    mode: 'onChange',
+    resolver: zodResolver(sendEmailSchema),
+  })
 
   const handleSendEmail = () => {
     startTransition(async () => {
@@ -49,50 +49,53 @@ export function SendEmailForm({
 
   return (
     <form
-      onSubmit={handleSubmit(handleSendEmail)} 
-      className={cn('flex flex-col gap-6 p-5 pt-0', className)} {...props}
+      onSubmit={handleSubmit(handleSendEmail)}
+      className={cn('flex flex-col gap-6 p-5 pt-0', className)}
+      {...props}
     >
-      <div className='flex flex-col items-center gap-2 text-center'>
-        <h1 className='font-poppins text-2xl font-semibold text-left'>
-          Recuperação de senha
-        </h1>
-        <p className='font-poppins text-muted-foreground lg:text-base text-sm text-left'>
-          Insira seu e-mail abaixo para receber o código de verificação.
-        </p>
-      </div>
-      <div className='grid gap-6'>
-        <div className='grid gap-1'>
-          <Label htmlFor='email' className='font-semibold font-poppins'>
-            Email
-          </Label>
-          <Input
-            id='email'
-            type='email'
-            placeholder='m@example.com'
-            aria-invalid={!!errors.email}
-            {...register('email')}
-          />
-          {errors.email && (
-            <p className='text-red-700 text-sm'>{errors.email.message}</p>
-          )}
+      <div className='flex flex-col gap-6'>
+        <div className='flex flex-col items-center gap-2 text-center'>
+          <h1 className='font-rubik text-2xl font-semibold text-left'>
+            Recuperação de senha
+          </h1>
+          <p className='font-rubik text-text-primary lg:text-base text-sm text-left'>
+            Insira seu e-mail abaixo para receber o código de verificação.
+          </p>
         </div>
-        <Button
-          type='submit'
-          className='w-full cursor-pointer'
-          disabled={isPending}
-        >
-          {isPending && <Spinner />}
-          {isPending ? 'Enviando...' : 'Enviar'}
-        </Button>
-
+        <div className='grid gap-6'>
+          <div className='grid gap-1'>
+            <Label htmlFor='email' className='font-semibold font-rubik'>
+              Email
+            </Label>
+            <Input
+              id='email'
+              type='email'
+              placeholder='m@example.com'
+              aria-invalid={!!errors.email}
+              {...register('email')}
+            />
+            {errors.email && (
+              <p className='text-red-700 text-sm'>{errors.email.message}</p>
+            )}
+          </div>
+          <Button
+            type='submit'
+            className='w-full cursor-pointer'
+            disabled={isPending}
+            variant='authprimary'
+          >
+            {isPending && <Spinner />}
+            {isPending ? <p className='font-rubik text-[16px]'>Enviando...</p> : <p className='font-rubik text-[16px]'>Enviar</p>}
+          </Button>
+          <Button
+            onClick={handleBack}
+            variant='authSecondary'
+            className='w-full cursor-pointer gap-0'
+          >
+            <p className='font-rubik text-[16px]'>Voltar</p>
+          </Button>
+        </div>
       </div>
-      <Button
-        onClick={handleBack}
-        variant='outline'
-        className='w-full cursor-pointer'
-      >
-        Voltar
-      </Button>
     </form>
   )
 }
