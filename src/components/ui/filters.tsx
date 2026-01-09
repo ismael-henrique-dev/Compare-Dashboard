@@ -169,6 +169,7 @@ export function DatePicker() {
           <Button
             variant='outline'
             className='justify-start text-left font-normal w-full'
+            id='date-picker'
           >
             {date
               ? format(date, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })
@@ -184,7 +185,6 @@ export function DatePicker() {
             mode='single'
             selected={date}
             onSelect={handleSelectDate}
-         
             className='w-full'
             locale={ptBR}
             disabled={{
