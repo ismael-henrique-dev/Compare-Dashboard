@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { Spinner } from "../ui/spinner";
 import { toast } from "sonner";
 import Link from "next/link";
+import { login } from "@/HTTP/auth/login";
 
 export function LoginForm() {
   const [isPending, startTransition] = useTransition();
@@ -25,16 +26,16 @@ export function LoginForm() {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const handleLoginUser = () => {
+  const handleLoginUser = (data: LoginFormData) => {
     startTransition(async () => {
-      const response = "success";
+      const response = await login(data)
 
-      if (response === "success") {
-        toast.success(response);
+      if (response.status === "success") {
+        toast.success(response.status);
         console.log("Deu certo");
-        redirect("/platform/home");
+        redirect("/dashboard");
       } else {
-        toast.error(response);
+        toast.error(response.status);
       }
     });
   };
@@ -105,17 +106,6 @@ export function LoginForm() {
               <p className="font-rubik text-[16px]">Entrar</p>
             )}
           </Button>
-        </div>
-        <div className="flex flex-row justify-center gap-1">
-          <p className="font-rubik text-sm text-text-primary text-[16px]">
-            Já tem uma conta?
-          </p>
-          <Link
-            href="/login"
-            className="text-sm underline-offset-2 underline font-rubik text-text-primary text-[16px]"
-          >
-            Cadastre-se
-          </Link>
         </div>
       </div>
     </form>
