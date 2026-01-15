@@ -1,13 +1,20 @@
 
 import { AppSidebar } from '@/components/core/sidebar/app-sidebar'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+import { cookies } from 'next/headers'
 import { Suspense } from 'react'
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
+  const cookieStore = await cookies()
+  const userData = cookieStore.get('userData')
+
+  const user = userData ? JSON.parse(userData.value) : null
+
   return (
     <Suspense>
       <SidebarProvider
@@ -18,7 +25,7 @@ export default function DashboardLayout({
           } as React.CSSProperties
         }
       >
-        <AppSidebar variant='sidebar' />
+        <AppSidebar variant='sidebar' user={user}/>
         <SidebarInset>{children}</SidebarInset>
       </SidebarProvider>
     </Suspense>

@@ -1,7 +1,6 @@
-import { ErrosList } from "@/components/scraping-erros/erros-list";
-import ScrapingErrorsFilters from "@/components/scraping-erros/filters";
+import { EditPerfilForm } from "@/components/forms/edit-profile";
 import { Metadata } from "next";
-import { SiteHeader } from "@/components/site-header";
+import { SiteHeader } from '@/components/site-header'
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -9,16 +8,13 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
-} from "@/components/ui/breadcrumb";
-import Pagination from "@/components/ui/pagination";
-import { Suspense } from "react";
-import ErrosListSkeleton from "@/components/scraping-erros/erros-list-skeleton";
+} from '@/components/ui/breadcrumb'
 
 export const metadata: Metadata = {
-  title: "Histórico de erros",
+  title: "Alterar dados cadastrais",
 };
 
-export default function ScrapingErrors() {
+export default function LoginPage() {
   return (
     <>
       <SiteHeader>
@@ -33,22 +29,16 @@ export default function ScrapingErrors() {
                 className="lg:flex hidden"
                 href="/dashboard/scraping-erros"
               >
-                Histórico de erros
+                Alterar dados cadastrais
               </BreadcrumbLink>
               <BreadcrumbEllipsis className="lg:hidden" />
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </SiteHeader>
-      <div className="flex flex-1 flex-col px-4 lg:px-6 py-6 gap-6">
-        <ScrapingErrorsFilters />
-        <Suspense fallback={<ErrosListSkeleton />}>
-          <ErrosList />
-        </Suspense>
 
-        <div className="flex w-full justify-center">
-          <Pagination totalPages={10} />
-        </div>
+      <div className="w-full h-full pr-7 pl-7 pt-6 bg-accent">
+        <EditPerfilForm />
       </div>
     </>
   );
